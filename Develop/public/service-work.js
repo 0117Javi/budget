@@ -3,7 +3,7 @@ const FILES_TO_CACHE = [
   "/index.js",
   "/index.html",
   "/styles.css",
-  "/manifest.webmanifest",
+  "/manifest.webmanifest.json",
   "/icons/icon-192x192.png",
   "/icons/icon-512x512.png",
 ];
@@ -34,7 +34,7 @@ self.addEventListener("fetch", (event) => {
   if (event.request.url.includes("/api/images")) {
     // make network request and fallback to cache if network request fails (offline)
     event.respondWith(
-      caches.open(RUNTIME_CACHE).then((cache) => {
+      caches.open(DATA_CACHE_NAME).then((cache) => {
         return fetch(event.request)
           .then((response) => {
             cache.put(event.request, response.clone());
@@ -54,7 +54,7 @@ self.addEventListener("fetch", (event) => {
       }
 
       // request is not in cache. make network request and cache the response
-      return caches.open(RUNTIME_CACHE).then((cache) => {
+      return caches.open(DATA_CACHE_NAME).then((cache) => {
         return fetch(event.request).then((response) => {
           return cache.put(event.request, response.clone()).then(() => {
             return response;
