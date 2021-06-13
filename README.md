@@ -1,16 +1,17 @@
 # budget tracker web app
 
 live like here:
+[it works i promise](https://boiling-depths-60981.herokuapp.com/ "get that money girl")
 
 ---
 
 contributors:
-@me
+just me
 
-## description:
+description:
 
 this web app will track your spending. you can enter you profits and losses
 
-## installation:
+installation:
 
 built this like bob using VScode, and installed so npm packages.
